@@ -1,0 +1,44 @@
+<mat-card class="view">
+    <mat-card-header>
+        <mat-card-title>Example 1</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="example-container" [formGroup]="exampleForm1">
+            <!-- <div class="row leftbar">
+                <mat-radio-group formControlName="typeCust" Class="radio-group">
+                    <mat-radio-button *ngFor="let child of options" class="example-margin" [value]="child.value">{{child.label}}</mat-radio-button>
+                </mat-radio-group>
+            </div> -->
+
+            <div class="row">
+                <div class="col-sm-4 leftbar">
+                    <div class="form-group">
+                        <label class="control-label label-custom">ชื่อ</label>
+                        <input type="text" class="form-control"  placeholder="" formControlName="name" >
+                    </div>
+                </div>
+
+                <div class="col-sm-4 leftbar" >
+                    <div class="form-group">
+                        <label class="control-label label-custom">นามสกุล</label>
+                        <input type="text" class="form-control"  placeholder="" formControlName="surname" >
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" >
+                <div class="col-sm-4 leftbar">
+                    <div class="form-group">
+                        <label class="control-label label-custom">Citizen ID</label>
+                        <input type="text" class="form-control"  placeholder="" formControlName="citizenid" >
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center" >
+                <button mat-button class="ok-btn" >ค้นหา</button>&nbsp;
+                <button mat-button class="refresh-btn" >ล้างค่า</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
