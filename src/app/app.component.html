@@ -1,0 +1,11 @@
+<h1>{{title}}</h1>
+<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <a routerLink="/example-one" mat-menu-item>
+    <mat-icon>info</mat-icon>
+    <span>Example-1</span>
+  </a>
+</mat-menu>
+<router-outlet></router-outlet>
