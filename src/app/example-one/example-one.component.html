@@ -3,41 +3,63 @@
         <mat-card-title>Example 1</mat-card-title>
     </mat-card-header>
     <mat-card-content>
+        <mat-toolbar class="toolbar-header" [style.justify-content]="'center'">
+            <span>Add New Customer</span>
+        </mat-toolbar>
+        <span>&nbsp;</span>
         <form class="example-container" [formGroup]="exampleForm1">
-            <!-- <div class="row leftbar">
+            <div class="row leftbar">
                 <mat-radio-group formControlName="typeCust" Class="radio-group">
-                    <mat-radio-button *ngFor="let child of options" class="example-margin" [value]="child.value">{{child.label}}</mat-radio-button>
+                    <mat-radio-button *ngFor="let child of options" class="example-margin" [value]="child.value">
+                        {{child.label}}</mat-radio-button>
                 </mat-radio-group>
-            </div> -->
+            </div>
 
             <div class="row">
                 <div class="col-sm-4 leftbar">
                     <div class="form-group">
                         <label class="control-label label-custom">ชื่อ</label>
-                        <input type="text" class="form-control"  placeholder="" formControlName="name" >
+                        <input type="text" class="form-control" placeholder="" formControlName="name">
+                    </div>
+                    <div *ngIf="exampleForm1.controls.name.invalid && (exampleForm1.controls.name.dirty || exampleForm1.controls.name.touched)" class="alert alert-danger">
+
+                        <div *ngIf="exampleForm1.controls.name.errors?.required">
+                            Name is required.
+                        </div>
+                        <div *ngIf="exampleForm1.controls.name.errors?.minlength">
+                            Name must be at least 4 characters long.
+                          </div>
                     </div>
                 </div>
 
-                <div class="col-sm-4 leftbar" >
+                <div class="col-sm-4 leftbar" *ngIf="exampleForm1.controls['typeCust'].value == '1'">
                     <div class="form-group">
                         <label class="control-label label-custom">นามสกุล</label>
-                        <input type="text" class="form-control"  placeholder="" formControlName="surname" >
+                        <input type="text" class="form-control" placeholder="" formControlName="surname">
                     </div>
                 </div>
             </div>
 
-            <div class="row" >
+            <div class="row" *ngIf="exampleForm1.controls['typeCust'].value == '1'">
                 <div class="col-sm-4 leftbar">
                     <div class="form-group">
                         <label class="control-label label-custom">Citizen ID</label>
-                        <input type="text" class="form-control"  placeholder="" formControlName="citizenid" >
+                        <input type="text" class="form-control" placeholder="" formControlName="citizenid">
                     </div>
                 </div>
             </div>
 
-            <div class="text-center" >
-                <button mat-button class="ok-btn" >ค้นหา</button>&nbsp;
-                <button mat-button class="refresh-btn" >ล้างค่า</button>
+            <div class="row" *ngIf="exampleForm1.controls['typeCust'].value == '2'">
+                <div class="col-sm-4 leftbar">
+                    <div class="form-group">
+                        <label class="control-label label-custom">Juristic ID</label>
+                        <input type="text" class="form-control" placeholder="" formControlName="juristicid">
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button mat-button class="ok-btn" (click)=save()>บันทึก</button>&nbsp;
+                <button mat-button class="refresh-btn">ล้างค่า</button>
             </div>
         </form>
     </mat-card-content>
