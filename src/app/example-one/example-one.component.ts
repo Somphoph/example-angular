@@ -9,7 +9,7 @@ export class ExampleOneComponent implements OnInit {
   exampleForm1 = this.fb.group(
     {
       typeCust: '', name: ['', [Validators.required, Validators.minLength(4)]], surname: [''], citizenid: [''], juristicid: ['']
-      , aliases: this.fb.array([this.fb.control('')])
+      , aliases: this.fb.array([this.fb.group({alias : [''], desc : ['']})])
     });
   options: Array<any> = [
     {
@@ -34,6 +34,6 @@ export class ExampleOneComponent implements OnInit {
   }
 
   addAlias(): void {
-    this.aliases.push(this.fb.control(''));
+    this.aliases.push(this.fb.group({alias : [''], desc : ['']}));
   }
 }
