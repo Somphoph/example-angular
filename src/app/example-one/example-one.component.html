@@ -57,6 +57,19 @@
                     </div>
                 </div>
             </div>
+            <div formArrayName="aliases">
+                <h2>Aliases</h2>
+                <button (click)="addAlias()">+ Add another alias</button>
+              
+                <div *ngFor="let alias of aliases.controls; let i=index">
+                  <!-- The repeated alias template -->
+                  <div formGroupName="{{i}}">
+                  <label for="alias-{{ i }}">Alias:</label>
+                  <input id="alias-{{ i }}" type="text" formControlName="alias" />
+                  <input id="desc-{{ i }}" type="text" formControlName="desc" />
+                  </div>
+                </div>
+              </div>
             <div class="text-center">
                 <button mat-button class="ok-btn" (click)=save()>บันทึก</button>&nbsp;
                 <button mat-button class="refresh-btn">ล้างค่า</button>
